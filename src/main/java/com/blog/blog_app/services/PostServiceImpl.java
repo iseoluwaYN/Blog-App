@@ -59,7 +59,7 @@ public class PostServiceImpl implements PostService{
                 return postRepository.save(postToUpdate);
 //            }else throw new IllegalArgumentException("Post not found");
         }
-        else throw new NullPointerException("Post doesn't exist");
+                                                                                       else throw new NullPointerException("Post doesn't exist");
     }
 
 }
