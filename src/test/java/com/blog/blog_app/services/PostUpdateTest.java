@@ -39,3 +39,4 @@ public class PostUpdateTest {
         assertThat(post.getAuthor()).isEqualTo("Ligali");
     }
 }
+
