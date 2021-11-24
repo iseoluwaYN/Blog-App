@@ -1,6 +1,7 @@
 package com.blog.blog_app.services;
 
 import com.blog.blog_app.data.dto.PostUpdateDto;
+import com.blog.blog_app.data.model.Comment;
 import com.blog.blog_app.data.model.Post;
 import com.blog.blog_app.data.repository.PostRepository;
 import com.blog.blog_app.exceptions.PostDoesNotExistException;
@@ -53,13 +54,25 @@ public class PostServiceImpl implements PostService{
         if(updateDto != null) {
 
             Post postToUpdate = postRepository.getById(id);
-
 //            if(postToUpdate == null) {
                 postMapper.mapDtoToPost(updateDto, postToUpdate);
                 return postRepository.save(postToUpdate);
 //            }else throw new IllegalArgumentException("Post not found");
         }
-                                                                                       else throw new NullPointerException("Post doesn't exist");
+        else throw new NullPointerException("Post doesn't exist");
     }
+
+    @Override
+    public void createComment(Long id, Comment comment) {
+        Optional<Post> foundPost = postRepository.findById(id);
+
+        if(foundPost.isPresent()){
+            Post post = foundPost.get();
+            post.getComments().add(comment);
+            postRepository.save(post);
+        }
+    }
+
+
 
 }

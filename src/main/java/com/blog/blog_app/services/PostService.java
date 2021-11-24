@@ -1,9 +1,9 @@
 package com.blog.blog_app.services;
 
 import com.blog.blog_app.data.dto.PostUpdateDto;
+import com.blog.blog_app.data.model.Comment;
 import com.blog.blog_app.data.model.Post;
 import com.blog.blog_app.exceptions.PostDoesNotExistException;
-import com.blog.blog_app.exceptions.PostException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,4 +16,5 @@ public interface PostService {
     List<Post> findByAuthor(String author);
     void delete(Long id);
     Post updatePost(Long id, PostUpdateDto updateDto);
+    void createComment(Long id, Comment comment);
 }

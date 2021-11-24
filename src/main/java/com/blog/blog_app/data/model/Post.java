@@ -20,9 +20,9 @@ public class Post {
     private String postBody;
     private String author;
 
-    @OneToMany
-    @ToString.Exclude
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Comment> comments;
+
     @CreationTimestamp
     private LocalDate dateCreated;
 }
